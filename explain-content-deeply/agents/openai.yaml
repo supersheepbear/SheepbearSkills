@@ -1,0 +1,4 @@
+interface:
+  display_name: "Deep Teaching Explainer"
+  short_description: "Writes full reviewed lessons into subfolders."
+  default_prompt: "Use $explain-content-deeply to teach this material, write the complete lesson into a new subfolder, and use reviewed subagents for multi-chapter output."
