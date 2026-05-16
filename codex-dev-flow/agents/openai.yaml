@@ -1,0 +1,4 @@
+interface:
+  display_name: "Codex Dev Flow"
+  short_description: "Govern disciplined Codex development workflows"
+  default_prompt: "Use $codex-dev-flow to plan, execute, review, or hand off this repository task."
