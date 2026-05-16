@@ -42,12 +42,12 @@ Complete this section for `ship`, `auto-ship`, `merge`, `sync`, or `super-ship`.
 
 | Action | Authorized | Evidence |
 |---|---|---|
-| Commit | yes | no | not applicable | <user prompt or plan decision> |
-| Push | yes | no | not applicable | <user prompt or plan decision> |
-| Create/update PR | yes | no | not applicable | <user prompt or plan decision> |
-| Merge PR | yes | no | not applicable | <user prompt or plan decision> |
-| Checkout main | yes | no | not applicable | <user prompt or plan decision> |
-| Pull latest | yes | no | not applicable | <user prompt or plan decision> |
+| Commit | yes/no/not applicable | <user prompt or plan decision> |
+| Push | yes/no/not applicable | <user prompt or plan decision> |
+| Create/update PR | yes/no/not applicable | <user prompt or plan decision> |
+| Merge PR | yes/no/not applicable | <user prompt or plan decision> |
+| Checkout main | yes/no/not applicable | <user prompt or plan decision> |
+| Pull latest | yes/no/not applicable | <user prompt or plan decision> |
 
 ## 3. Plan History
 
@@ -98,12 +98,23 @@ Record exceptions before relying on them.
 ## 7. Tasks
 
 - [ ] T-001: <task>
+  - **Owner**: main-agent | subagent:<name> | user | external
+  - **Module/Area**: <primary repo area>
+  - **Boundary**: <what this task may change, and what it must not change>
   - **Purpose**: <why>
   - **Files**: <paths>
   - **Acceptance**: <observable completion>
   - **Depends**: none
 
-## 8. Execution Log
+## 8. Receipt Log
+
+Receipts record what actually happened. Add one when work is accepted, progress is made, a blocker appears, work is ready for review, or work completes.
+
+| ID | Task | Phase | Owner | Summary | Evidence | Risks | Next |
+|---|---|---|---|---|---|---|---|
+| REC-001 | T-001 | accepted | <owner> | <what started or changed> | <files, commands, artifacts, or notes> | <known risks or none> | <next action> |
+
+## 8.1 Execution Log
 
 - **NOW**: <current work>
 - **DONE**: <completed work>
@@ -127,6 +138,14 @@ Record exceptions before relying on them.
 |---|---|---|---|---|
 | FIND-001 | high | <issue> | T-002 | open | fixed | deferred |
 
+## 10.1 Review Decisions
+
+Review decisions explain why work passed, failed, was deferred, or needs rework. Base each decision on receipts, findings, validation, and changed files.
+
+| ID | Based On | Verdict | Evidence | Rationale | Next |
+|---|---|---|---|---|---|
+| RDEC-001 | REC-001, VAL-001, FIND-001 | pass/fail/defer/needs-rework | <evidence summary> | <why this verdict is justified> | <next action> |
+
 ## 11. Changed Files
 
 | Path | Reason | Task |
@@ -143,4 +162,6 @@ Record exceptions before relying on them.
 - **Handoff type**: automatic task update | user-triggered session handoff
 - **Current state**: <where things stand>
 - **Next recommended action**: <specific next step>
+- **Latest receipt**: <REC-* or none>
+- **Latest review decision**: <RDEC-* or none>
 - **Do not re-ask**: <answered questions and settled decisions>

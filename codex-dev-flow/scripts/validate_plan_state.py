@@ -27,6 +27,11 @@ REQUIRED_SECTIONS = (
     "## 13. Handoff Notes",
 )
 
+RECOMMENDED_SECTIONS = (
+    "## 8. Receipt Log",
+    "## 10.1 Review Decisions",
+)
+
 
 def read_text(path: Path) -> str:
     """Return file text with tolerant decoding."""
@@ -42,9 +47,14 @@ def validate(path: Path) -> dict[str, object]:
 
     text = read_text(path)
     missing = [section for section in REQUIRED_SECTIONS if section not in text]
+    missing_recommended = [
+        section for section in RECOMMENDED_SECTIONS if section not in text
+    ]
     task_ids = sorted(set(re.findall(r"\bT-\d{3}\b", text)))
     request_ids = sorted(set(re.findall(r"\bREQ-\d{3}\b", text)))
+    receipt_ids = sorted(set(re.findall(r"\bREC-\d{3}\b", text)))
     finding_ids = sorted(set(re.findall(r"\bFIND-\d{3}\b", text)))
+    review_decision_ids = sorted(set(re.findall(r"\bRDEC-\d{3}\b", text)))
     validation_ids = sorted(set(re.findall(r"\bVAL-\d{3}\b", text)))
 
     has_next_action = "**Next Action**:" in text
@@ -63,10 +73,13 @@ def validate(path: Path) -> dict[str, object]:
         "ok": not errors,
         "errors": errors,
         "missing_sections": missing,
+        "missing_recommended_sections": missing_recommended,
         "counts": {
             "requests": len(request_ids),
             "tasks": len(task_ids),
+            "receipts": len(receipt_ids),
             "findings": len(finding_ids),
+            "review_decisions": len(review_decision_ids),
             "validations": len(validation_ids),
         },
     }

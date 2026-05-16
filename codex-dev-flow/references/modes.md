@@ -4,6 +4,8 @@ Run a short preflight before each mode. Present material options and clarify mat
 
 For automation modes (`ship`, `auto-ship`, `merge`, `sync`, `super-ship`), read [automation-modes.md](automation-modes.md) before acting.
 
+For task ownership, receipts, and review decisions, use [task-receipt-decision-policy.md](task-receipt-decision-policy.md) when the mode creates or updates an active plan.
+
 ## `help`
 
 Read-only mode-selection guidance.
@@ -71,7 +73,7 @@ Read-only planning.
 4. Perform a proactive code audit in the relevant area: duplication, overly complex design, inconsistent naming, missing tests, brittle boundaries, and performance-sensitive paths.
 5. Compare viable approaches and record tradeoffs for performance, maintainability, readability, extensibility, testability, and documentation.
 6. Create or update `.codex/plans/<topic>_<YYYYMMDD>.md` from `assets/plan-template.md`.
-7. Add tasks with stable IDs and clear acceptance criteria.
+7. Add tasks with stable IDs, owner, module/area, boundary, dependencies, and clear acceptance criteria.
 8. Add docs impact only when behavior, API, CLI, config, or user workflow changes.
 9. Ask for user decisions only when the clarification gate requires it.
 
@@ -83,13 +85,15 @@ Implementation against an approved plan.
 
 1. Read the active plan and identify the next eligible task.
 2. Confirm execution scope: `one-task-at-a-time` or `all-tasks-together`.
-3. Read exact files and nearby tests before editing.
-4. Implement the smallest defensible change.
-5. Add or update tests according to repo policy.
-6. For Python code changes, follow TDD: write or update the failing pytest unit test first, implement the minimal passing code, then refactor.
-7. For Python code changes, verify pytest isolation and record docs impact or the reason docs are not affected.
-8. Run relevant validation, then full required validation before final handoff.
-9. Update task status, changed files, validation entries, findings, and proposals.
+3. Add an accepted/progress `REC-*` entry before edits when the task is non-trivial or delegated.
+4. Read exact files and nearby tests before editing.
+5. Implement the smallest defensible change.
+6. Add or update tests according to repo policy.
+7. For Python code changes, follow TDD: write or update the failing pytest unit test first, implement the minimal passing code, then refactor.
+8. For Python code changes, verify pytest isolation and record docs impact or the reason docs are not affected.
+9. Run relevant validation, then full required validation before final handoff.
+10. Add a completed or blocked `REC-*` entry that lists files, validation evidence, remaining risks, and next action.
+11. Update task status, changed files, validation entries, findings, and proposals.
 
 For `one-task-at-a-time`, stop after one task, update `Handoff Notes`, and report status. For `all-tasks-together`, continue until the approved plan is complete or blocked.
 
@@ -103,8 +107,9 @@ Independent audit. Default is read-only.
 2. Compare implementation to requirements and acceptance criteria.
 3. Check correctness, missing tests, docs impact, security/safety, maintainability, and workflow hygiene.
 4. Write findings as `FIND-*` entries with severity, evidence, and required remediation.
-5. Update `Handoff Notes` with the next remediation or completion action.
-6. Do not edit code unless the user explicitly asks for remediation.
+5. Write an `RDEC-*` review decision that references receipts, validation, findings, and changed files, with verdict `pass`, `fail`, `defer`, or `needs-rework`.
+6. Update `Handoff Notes` with the next remediation or completion action.
+7. Do not edit code unless the user explicitly asks for remediation.
 
 Preflight focus: review target, diff base, and strictness level when unclear.
 
@@ -126,7 +131,7 @@ User-triggered continuation summary for another Codex session or long pause.
 1. Read the current conversation context available to you, active plan, git status, changed files, and validation entries.
 2. Update or create a handoff section in the active plan.
 3. Optionally create `.codex/plans/<topic>_handoff.md` from `assets/handoff-template.md` for long tasks.
-4. Include current goal, original request IDs, decisions, assumptions, completed tasks, open tasks, open findings, changed files, commands run, and next recommended action.
+4. Include current goal, original request IDs, decisions, assumptions, latest receipts, review decisions, completed tasks, open tasks, open findings, changed files, commands run, and next recommended action.
 5. Make the handoff sufficient for a new chat to continue without reinvestigating settled decisions or re-asking answered questions.
 
 Do not run full session handoff automatically after every task. Automatic task handoff means updating the active plan's `Handoff Notes`; full `handoff` mode is for explicit user requests or when the agent suggests it because context is getting long.
@@ -140,11 +145,12 @@ Git handoff.
 1. Inspect working tree and active plan.
 2. Identify intended vs unrelated changes.
 3. Ensure required validation has run or record why it did not.
-4. Check durable context candidates and update AGENTS/docs only when appropriate.
-5. Update `Handoff Notes` before staging or committing.
-6. Stage only intended files.
-7. Commit with a clear message if the user asked to commit.
-8. Push only when explicitly requested and permitted.
+4. Check that recent completed tasks have receipts and that review decisions are recorded when review was required.
+5. Check durable context candidates and update AGENTS/docs only when appropriate.
+6. Update `Handoff Notes` before staging or committing.
+7. Stage only intended files.
+8. Commit with a clear message if the user asked to commit.
+9. Push only when explicitly requested and permitted.
 
 Preflight focus: intended files, commit vs push, validation expectations, and unrelated changes.
 
@@ -152,7 +158,7 @@ Preflight focus: intended files, commit vs push, validation expectations, and un
 
 Draft issue and pull request text.
 
-1. Read active plan, validation, review findings, changed files, and handoff notes.
+1. Read active plan, receipts, validation, review findings, review decisions, changed files, and handoff notes.
 2. Use `assets/issue-template.md` and `assets/pr-template.md`.
 3. Do not fabricate issue numbers, validation, reviewers, or deployment status.
 4. Clearly label anything that is pending or not run.

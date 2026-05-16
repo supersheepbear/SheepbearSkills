@@ -64,9 +64,11 @@ Path:
 
 ```text
 approved plan
+-> write accepted/progress receipts for active tasks
 -> execute approved tasks
 -> validate
 -> review
+-> write review decision
 -> remediate approved findings
 -> update task handoff notes
 -> check-in
@@ -92,9 +94,11 @@ Path:
 preflight
 -> plan with best recommendations
 -> record decisions and assumptions
+-> write accepted/progress receipts for active tasks
 -> execute
 -> validate
 -> review
+-> write review decision
 -> remediate
 -> update task handoff notes
 -> check-in if authorized
@@ -120,6 +124,7 @@ identify PR
 -> inspect PR status/checks
 -> confirm merge method
 -> merge if authorized and checks are acceptable
+-> write merge receipt and review/merge decision
 -> update active plan/handoff notes
 ```
 
@@ -141,6 +146,7 @@ Path:
 confirm local working tree is clean or safe
 -> checkout main/master target
 -> pull latest
+-> write sync receipt
 -> optionally delete local feature branch if authorized
 -> update active plan/handoff notes
 ```
@@ -156,15 +162,18 @@ Path:
 ```text
 preflight with explicit authorization
 -> plan or load active plan
+-> write accepted/progress receipts for active tasks
 -> execute
 -> validate
 -> review
+-> write review decision
 -> remediate until clean or blocked
 -> update task handoff notes
 -> check-in
 -> create or update PR
 -> verify PR checks/status
 -> merge PR
+-> write merge receipt
 -> checkout main
 -> pull latest
 -> update final handoff notes

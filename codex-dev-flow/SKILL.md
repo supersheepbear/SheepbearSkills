@@ -69,7 +69,7 @@ Default active-plan location:
 
 Use `.github/scratchpad_<topic>_<YYYYMMDD>.md` only when the user or repo explicitly prefers GitHub-style scratchpads.
 
-The active plan is a structured ledger, not a transcript. It stores current truth, stable IDs, decisions, tasks, findings, proposals, validation, and continuation notes. Use [plan-template.md](assets/plan-template.md).
+The active plan is a structured ledger, not a transcript. It stores current truth, stable IDs, decisions, tasks, receipts, findings, proposals, validation, review decisions, and continuation notes. Use [plan-template.md](assets/plan-template.md).
 
 Important ID prefixes:
 
@@ -79,10 +79,12 @@ Important ID prefixes:
 - `ASM-*`: assumption.
 - `PROP-*`: proposal or improvement idea.
 - `T-*`: executable task.
+- `REC-*`: receipt recording what actually happened and what evidence exists.
 - `FIND-*`: review or validation finding.
+- `RDEC-*`: review decision explaining pass, fail, defer, or rework.
 - `VAL-*`: validation run.
 
-Every loop starts by reading the active plan, choosing the next open item, doing only the required work, and updating the plan. Proposals must become `accepted`, `rejected`, `deferred`, or `needs-user`; accepted proposals become tasks. Findings that require changes become remediation tasks.
+Every loop starts by reading the active plan, choosing the next open item, doing only the required work, and updating the plan. Proposals must become `accepted`, `rejected`, `deferred`, or `needs-user`; accepted proposals become tasks. Tasks should have an owner, module/area, boundary, acceptance criteria, and dependency status. Execution should leave `REC-*` receipts. Review should leave `RDEC-*` decisions based on receipts, validation, findings, and changed files. Findings that require changes become remediation tasks.
 
 Task-level handoff is automatic: after `execute`, `review`, validation failure, one-task-at-a-time pause, or `check-in`, update the active plan's `Handoff Notes` with current state and next recommended action. Session-level handoff is explicit: use `handoff` mode only when the user asks to prepare continuation notes for another Codex chat or a long pause.
 
@@ -108,6 +110,7 @@ Read only the references needed for the selected mode:
 - Human-readable repository walkthroughs: [repo-overview-mode.md](references/repo-overview-mode.md)
 - Read-only repo and external investigation: [research-mode.md](references/research-mode.md)
 - Validation discovery and evidence rules: [validation-policy.md](references/validation-policy.md)
+- Task receipts and review decisions: [task-receipt-decision-policy.md](references/task-receipt-decision-policy.md)
 - Durable guidance and `AGENTS.md` updates: [durable-context-policy.md](references/durable-context-policy.md)
 - Python package work: [python-policy.md](references/python-policy.md)
 - Pytest/unit test work: [pytest-policy.md](references/pytest-policy.md)
@@ -124,6 +127,8 @@ Read only the references needed for the selected mode:
 - Never claim validation passed unless the exact command ran and succeeded.
 - Keep validation evidence concise in the active plan; put long logs only in user-visible summaries when needed.
 - Update the plan after each completed task, blocker, finding, or material user decision.
+- Add concise `REC-*` receipts for accepted work, progress, blockers, ready-for-review handoff, completed tasks, and subagent returns.
+- Add `RDEC-*` review decisions for pass, fail, defer, or needs-rework outcomes; do not treat a bare "looks good" statement as a review decision.
 - Update task-level handoff notes after each completed task, review, validation failure, pause, or check-in.
 - Do not store one-off task details in `AGENTS.md`. Put durable, repeated repo guidance there only after it is clearly reusable.
 

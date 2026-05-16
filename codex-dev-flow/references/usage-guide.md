@@ -49,8 +49,8 @@ Use $codex-dev-flow handoff to summarize this session for a future Codex chat.
 3. `repo-overview`: write a human-readable repo walkthrough when the user wants understanding rather than coding context.
 4. `research`: answer repo questions or investigate risks without editing files.
 5. `plan`: create `.codex/plans/<topic>_<date>.md`.
-6. `execute`: implement approved tasks.
-7. `review`: audit the diff and produce tracked findings.
+6. `execute`: implement approved tasks and write receipts for what actually happened.
+7. `review`: audit the diff and produce tracked findings plus a review decision.
 8. `execute`: remediate findings if needed.
 9. Automatic task handoff: update the active plan's `Handoff Notes`.
 10. `check-in`: validate, stage, commit, and optionally push.
@@ -127,6 +127,18 @@ Automation modes must show options and get required authorization before startin
 Before remote actions, Codex should verify GitHub CLI with `gh --version` and `gh auth status`. If GitHub CLI is unavailable, it should fall back to manual PR text.
 
 In `plan` mode, Codex should preserve the strongest part of the old flow: root-cause analysis, proactive code audit, decision points, performance/tradeoff reasoning, and an implementation-ready task list.
+
+## Task, Receipt, Decision
+
+For non-trivial work, the active plan should preserve a simple chain:
+
+| Object | What it answers | ID |
+|---|---|---|
+| Task | What needs doing, who owns it, and what boundary applies. | `T-*` |
+| Receipt | What actually happened, what evidence exists, and what comes next. | `REC-*` |
+| Review decision | Why the work passed, failed, was deferred, or needs rework. | `RDEC-*` |
+
+This is how the flow avoids relying on chat memory. Small tasks can keep these entries short, but subagent work, review, automation modes, and handoff should always leave receipt-shaped evidence.
 
 ## Help Mode
 
@@ -208,6 +220,8 @@ Use $codex-dev-flow plan and propose whether explorer/reviewer/verifier subagent
 
 Good uses are read-only exploration, independent review, test failure analysis, docs-only work, or disjoint implementation slices. Avoid multiple agents editing the same files.
 
+Every subagent should return a receipt-shaped summary with task ID, owner, files read or changed, evidence, risks, and next recommendation. The main agent writes that into the active plan as `REC-*`.
+
 ## Continuation
 
 Task-level handoff is automatic. After execution, review, validation failure, one-task-at-a-time pause, or check-in, Codex should update the active plan's `Handoff Notes` with the current state and next action.
@@ -218,7 +232,7 @@ Before ending a long chat session, run:
 Use $codex-dev-flow handoff.
 ```
 
-The full handoff should record the active request, plan, decisions, assumptions, completed tasks, open findings, validation results, changed files, and next action. A new Codex chat should read the handoff and active plan before continuing.
+The full handoff should record the active request, plan, decisions, assumptions, latest receipts, review decisions, completed tasks, open findings, validation results, changed files, and next action. A new Codex chat should read the handoff and active plan before continuing.
 
 If the context is getting long or work is paused, Codex should suggest running `handoff`, but should not create a full session handoff automatically unless the user agrees.
 

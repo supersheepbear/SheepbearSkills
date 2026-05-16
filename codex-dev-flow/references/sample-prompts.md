@@ -11,9 +11,9 @@ Use these as regression examples when forward-testing the skill.
 | "Does this repo support multi-instrument backtesting? Cite evidence." | `research` | Inspect repo evidence and answer without editing files. |
 | "Research the latest FastAPI docs and compare them with this repo's dependency injection." | `research` | Use repo evidence plus official external docs when needed. |
 | "Plan a refactor for the data loader." | `plan` | Create `.codex/plans/...`, capture requirements and tasks, no edits. |
-| "Execute the approved plan one task at a time." | `execute` | Read active plan, implement next task, validate, update status, stop. |
-| "Review the current diff against the plan." | `review` | Read-only audit, produce `FIND-*` entries, no code edits. |
-| "Summarize this session so I can continue in a new Codex chat." | `handoff` | Create user-triggered session handoff notes with next action. |
+| "Execute the approved plan one task at a time." | `execute` | Read active plan, implement next task, validate, write `REC-*`, update status, stop. |
+| "Review the current diff against the plan." | `review` | Read-only audit, produce `FIND-*` and `RDEC-*` entries, no code edits. |
+| "Summarize this session so I can continue in a new Codex chat." | `handoff` | Create user-triggered session handoff notes with latest receipts, review decisions, and next action. |
 | "Commit the completed work." | `check-in` | Inspect diff, verify validation/context status, stage intended files, commit only if requested. |
 | "Draft the PR body." | `pr-issue` | Use stored plan and validation; do not invent issue numbers. |
 | "Ship the approved plan and prepare a PR." | `ship` | Present automation options, execute approved work, validate, review, check in, and stop before merge unless authorized. |
@@ -23,4 +23,4 @@ Use these as regression examples when forward-testing the skill.
 | "Super-ship this all the way through merge and pull main." | `super-ship` | Present Safe/Full/Local-only options and require explicit authorization for remote/main actions. |
 | "Free mode, just brainstorm." | `free` | Ignore this skill's workflow only; still obey higher-priority rules. |
 
-Forward tests should check that mode routing is correct, state files are concise, and validation claims are evidence-backed.
+Forward tests should check that mode routing is correct, state files are concise, receipts/review decisions are evidence-backed, and validation claims are not fabricated.

@@ -12,6 +12,12 @@
 |---|---|---|---|---|
 | FIND-001 | high | `path:line` | <issue> | <fix task> |
 
+## Review Decision
+
+| ID | Based On | Verdict | Evidence | Rationale | Next |
+|---|---|---|---|---|---|
+| RDEC-001 | REC-001, VAL-001, FIND-001 | pass/fail/defer/needs-rework | <evidence summary> | <why this verdict is justified> | <next action> |
+
 ## Checklist
 
 - **Functional correctness**: pass | fail | not checked
