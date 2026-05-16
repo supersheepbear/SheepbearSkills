@@ -49,6 +49,18 @@ Create a human-readable walkthrough of the repository.
 
 Preflight focus: target audience, desired language, output file path, depth, and whether to include beginner explanations.
 
+## `research`
+
+Read-only investigation for repo questions, feasibility, risks, external docs, or future planning inputs.
+
+1. Follow [research-mode.md](research-mode.md).
+2. Use repo evidence first.
+3. Use web or external docs only when the question depends on current external facts, APIs, packages, standards, or best practices.
+4. Answer directly in chat unless the user asks for a research note.
+5. If findings imply future implementation, record proposals or plan candidates only when there is an active plan; do not start coding.
+
+Preflight focus: exact question, scope, whether web/external research is allowed or required, and desired output format.
+
 ## `plan`
 
 Read-only planning.

@@ -4,7 +4,7 @@
 
 - **Active Request**: REQ-001
 - **Active Plan**: PLAN-001
-- **Mode**: help | init | context | repo-overview | plan | execute | review | explain | handoff | check-in | pr-issue | ship | auto-ship | merge | sync | super-ship | free
+- **Mode**: help | init | context | repo-overview | research | plan | execute | review | explain | handoff | check-in | pr-issue | ship | auto-ship | merge | sync | super-ship | free
 - **Execution Scope**: one-task-at-a-time | all-tasks-together | review-only | read-only
 - **Date**: <YYYY-MM-DD>
 - **Branch**: <branch>

@@ -1,6 +1,6 @@
 ---
 name: codex-dev-flow
-description: Orchestrate disciplined Codex software-development workflows with explicit modes for init, plan, execute, review, explain, handoff, check-in, and issue/PR drafting. Use when the user asks Codex to plan, implement, validate, audit, review, summarize a session for continuation, commit, or prepare handoff artifacts using a plan-driven repository workflow.
+description: Orchestrate disciplined Codex software-development workflows with explicit modes for help, init, context, repo-overview, research, plan, execute, review, explain, handoff, check-in, issue/PR drafting, and gated shipping automation. Use when the user asks Codex to investigate repo questions, research external docs, plan, implement, validate, audit, review, summarize a session for continuation, commit, or prepare handoff artifacts using a plan-driven repository workflow.
 ---
 
 # Codex Dev Flow
@@ -17,6 +17,7 @@ Supported modes:
 - `init`: read-only orientation for the current repo.
 - `context`: create or refresh an AI-ready repository context pack.
 - `repo-overview`: create a human-readable walkthrough of what a repo does.
+- `research`: answer repo-related questions through read-only repo and optional external research.
 - `plan`: read-only analysis and task planning.
 - `execute`: implement an approved plan.
 - `review`: independent audit of changed work.
@@ -87,7 +88,7 @@ Task-level handoff is automatic: after `execute`, `review`, validation failure, 
 
 ## Required Context Loading
 
-Before `context`, `repo-overview`, `plan`, `execute`, `review`, `handoff`, or `check-in`:
+Before `context`, `repo-overview`, `research`, `plan`, `execute`, `review`, `handoff`, or `check-in`:
 
 1. Read applicable repo instructions, especially root and nested `AGENTS.md`.
 2. Read the active plan if one exists or discover it with `scripts/find_active_plan.py`.
@@ -101,10 +102,11 @@ Read only the references needed for the selected mode:
 
 - Quick start for users: [usage-guide.md](references/usage-guide.md)
 - Routing: [mode-router.md](references/mode-router.md)
-- Help, init, context, repo-overview, plan, execute, review, explain, handoff, check-in, pr-issue, ship, auto-ship, merge, sync, super-ship, free: [modes.md](references/modes.md)
+- Help, init, context, repo-overview, research, plan, execute, review, explain, handoff, check-in, pr-issue, ship, auto-ship, merge, sync, super-ship, free: [modes.md](references/modes.md)
 - Automation flows and GitHub gates: [automation-modes.md](references/automation-modes.md)
 - Repository context generation: [context-mode.md](references/context-mode.md)
 - Human-readable repository walkthroughs: [repo-overview-mode.md](references/repo-overview-mode.md)
+- Read-only repo and external investigation: [research-mode.md](references/research-mode.md)
 - Validation discovery and evidence rules: [validation-policy.md](references/validation-policy.md)
 - Durable guidance and `AGENTS.md` updates: [durable-context-policy.md](references/durable-context-policy.md)
 - Python package work: [python-policy.md](references/python-policy.md)

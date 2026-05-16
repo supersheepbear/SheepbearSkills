@@ -8,7 +8,7 @@ This repo stores my reusable skills that can be copied or synced into a Codex sk
 
 | Skill | What It Does | Use When | Typical Output |
 |---|---|---|---|
-| [`codex-dev-flow`](./codex-dev-flow/SKILL.md) | Governs disciplined repository development workflows with modes for help, init, context, repo overview, planning, execution, review, explanation, handoff, check-in, PR/issue drafting, and automation. | You want Codex to plan, implement, validate, review, explain, summarize, commit, create/merge PRs, or keep a task ledger. | `.codex/plans/` task plans, `.codex/context/` repo context, review findings, explanations, handoff notes, PR/issue text, git workflow guidance. |
+| [`codex-dev-flow`](./codex-dev-flow/SKILL.md) | Governs disciplined repository development workflows with modes for help, init, context, repo overview, research, planning, execution, review, explanation, handoff, check-in, PR/issue drafting, and automation. | You want Codex to research repo questions, plan, implement, validate, review, explain, summarize, commit, create/merge PRs, or keep a task ledger. | `.codex/plans/` task plans, `.codex/context/` repo context, research answers, review findings, explanations, handoff notes, PR/issue text, git workflow guidance. |
 | [`explain-content-deeply`](./explain-content-deeply/SKILL.md) | Turns source material or a topic into a complete beginner-friendly textbook-style lesson and writes it to files. | You want content explained deeply, rewritten as a lesson, split into chapters, translated, or saved as teaching material. | A lesson-specific folder, `_lesson-manifest.md`, optional writing guide/table of contents, and one or more Markdown lesson files. |
 
 ## Quick Usage
@@ -19,6 +19,7 @@ This repo stores my reusable skills that can be copied or synced into a Codex sk
 | Load repo orientation before work. | `codex-dev-flow` | `Use $codex-dev-flow init to orient yourself in this repo.` |
 | Create AI-readable repo context. | `codex-dev-flow` | `Use $codex-dev-flow context to create a repo context pack.` |
 | Write a human-readable repo walkthrough. | `codex-dev-flow` | `Use $codex-dev-flow repo-overview and write a detailed beginner-friendly summary to RepoOverview.md.` |
+| Answer a repo question or do a read-only audit. | `codex-dev-flow` | `Use $codex-dev-flow research. Does this repo support multi-instrument backtesting? Cite evidence.` |
 | Plan and implement a code change carefully. | `codex-dev-flow` | `Use $codex-dev-flow plan for this change, then execute one-task-at-a-time after I approve.` |
 | Explain a plan, implementation, review, or code area. | `codex-dev-flow` | `Use $codex-dev-flow explain the active plan in beginner-friendly language.` |
 | Run the full automation path. | `codex-dev-flow` | `Use $codex-dev-flow super-ship, present the options, and wait for my authorization before remote actions.` |
@@ -36,6 +37,7 @@ Main modes:
 | `init` | Reads repo instructions/context and gives a read-only orientation. |
 | `context` | Creates or refreshes an AI-readable repo context pack. |
 | `repo-overview` | Writes a human-readable walkthrough of what the repo does. |
+| `research` | Answers repo questions or investigates risks with read-only repo/external research. |
 | `plan` | Creates a structured implementation plan. |
 | `execute` | Implements approved plan tasks. |
 | `review` | Audits the diff and records findings. |

@@ -8,6 +8,8 @@ Use these as regression examples when forward-testing the skill.
 | "Use codex-dev-flow init. What is this repo?" | `init` | Read-only orientation, no plan unless a goal is provided. |
 | "Generate an AI-readable context pack for this repo." | `context` | Create or refresh `.codex/context/` and record coverage gaps. |
 | "Read the docs and write a detailed beginner-friendly repo summary to ReadingSteiner.md. Do not fabricate." | `repo-overview` | Produce a human-readable repo walkthrough with evidence and uncertainty markers. |
+| "Does this repo support multi-instrument backtesting? Cite evidence." | `research` | Inspect repo evidence and answer without editing files. |
+| "Research the latest FastAPI docs and compare them with this repo's dependency injection." | `research` | Use repo evidence plus official external docs when needed. |
 | "Plan a refactor for the data loader." | `plan` | Create `.codex/plans/...`, capture requirements and tasks, no edits. |
 | "Execute the approved plan one task at a time." | `execute` | Read active plan, implement next task, validate, update status, stop. |
 | "Review the current diff against the plan." | `review` | Read-only audit, produce `FIND-*` entries, no code edits. |

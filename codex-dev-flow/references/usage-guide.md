@@ -23,6 +23,10 @@ Use $codex-dev-flow repo-overview to write a detailed human-readable walkthrough
 ```
 
 ```text
+Use $codex-dev-flow research to answer this repo question without editing files: <question>
+```
+
+```text
 Use $codex-dev-flow plan to design the change before implementation: <goal>
 ```
 
@@ -43,13 +47,14 @@ Use $codex-dev-flow handoff to summarize this session for a future Codex chat.
 1. `init`: load repo context and commands.
 2. `context`: create or refresh `.codex/context/` when repo-level context is missing or stale.
 3. `repo-overview`: write a human-readable repo walkthrough when the user wants understanding rather than coding context.
-4. `plan`: create `.codex/plans/<topic>_<date>.md`.
-5. `execute`: implement approved tasks.
-6. `review`: audit the diff and produce tracked findings.
-7. `execute`: remediate findings if needed.
-8. Automatic task handoff: update the active plan's `Handoff Notes`.
-9. `check-in`: validate, stage, commit, and optionally push.
-10. `pr-issue`: draft issue or PR text.
+4. `research`: answer repo questions or investigate risks without editing files.
+5. `plan`: create `.codex/plans/<topic>_<date>.md`.
+6. `execute`: implement approved tasks.
+7. `review`: audit the diff and produce tracked findings.
+8. `execute`: remediate findings if needed.
+9. Automatic task handoff: update the active plan's `Handoff Notes`.
+10. `check-in`: validate, stage, commit, and optionally push.
+11. `pr-issue`: draft issue or PR text.
 
 For larger work, use an automation mode:
 
@@ -86,6 +91,7 @@ If the ambiguity is low-risk and reversible, Codex should record the assumption 
 | `init` | You need repo orientation. | No |
 | `context` | You want an AI-ready repo context pack. | Context files only |
 | `repo-overview` | You want a human-readable walkthrough. | Report file |
+| `research` | You want an evidence-backed answer or read-only audit. | No by default |
 | `plan` | You want analysis and an implementation plan. | Plan file only |
 | `execute` | You approved the plan and want code changes. | Yes |
 | `review` | You want an independent audit. | No by default |
@@ -151,6 +157,20 @@ Use $codex-dev-flow repo-overview. Read the docs and code, then write a detailed
 ```
 
 This mode should read docs first, verify features against code where needed, separate supported capabilities from inferred or not-built-in workflows, and write a polished document. It is the right mode for "what can this repo do?" questions.
+
+## Research Mode
+
+Use research mode when you have a repo question but do not necessarily want a plan or code changes:
+
+```text
+Use $codex-dev-flow research. Does this repo support multi-instrument backtesting? Cite the evidence.
+```
+
+```text
+Use $codex-dev-flow research. Look up the current FastAPI docs and compare them with how this repo handles dependency injection.
+```
+
+Research mode is read-only by default. It should use repo evidence first, use external sources only when useful or required, and clearly separate verified facts from inferences.
 
 ## Execution Scope
 

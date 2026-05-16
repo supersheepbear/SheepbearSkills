@@ -17,6 +17,7 @@ This skill is a Codex-native successor to `developer-modes`, not a literal port.
 - `executor` becomes `execute`.
 - repo-context behavior becomes `context` mode.
 - detailed human-readable repo summaries become `repo-overview` mode.
+- read-only question answering and external/docs investigation become `research` mode.
 - `help` mode is added for mode-selection guidance.
 - `review` becomes a first-class mode.
 - `handoff` is added for continuation summaries.

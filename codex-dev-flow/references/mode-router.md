@@ -10,6 +10,7 @@ Use the user's explicit mode when present. If no mode is named, choose the least
 | "load context", "orient", "what is this repo" | `init` |
 | "generate repo context", "update context pack", "make AI repo summary" | `context` |
 | "walk me through the repo", "what can this repo do", "write a detailed repo summary" | `repo-overview` |
+| "research", "investigate", "answer a repo question", "audit this area without changes" | `research` |
 | "plan", "design", "audit before implementation", "what should we do" | `plan` |
 | "implement", "fix", "build", "continue approved plan" | `execute` |
 | "review", "audit the diff", "find issues", "check this work" | `review` |
