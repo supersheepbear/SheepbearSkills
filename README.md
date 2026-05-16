@@ -1,8 +1,8 @@
-# my_skills
+# SheepbearSkills
 
-Personal Codex skill library.
+Personal Codex skill library for reusable workflow and teaching skills.
 
-This repo stores reusable skills that can be copied or synced into a Codex skills folder when needed. Each skill lives in its own folder and has a `SKILL.md` file plus optional `references/`, `assets/`, `scripts/`, and `agents/openai.yaml`.
+This repo stores my reusable skills that can be copied or synced into a Codex skills folder when needed. Each skill lives in its own folder and has a `SKILL.md` file plus optional `references/`, `assets/`, `scripts/`, and `agents/openai.yaml`.
 
 ## Skills
 
